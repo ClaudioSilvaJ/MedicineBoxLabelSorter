@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from v3.util.Helper import Helper
+from util.Helper import Helper
 
 
 class ImageProcessor(Helper):
@@ -11,12 +11,6 @@ class ImageProcessor(Helper):
     return img_flat
 
   def segmenta2regioes(self, img):
-    # for i in range(len(pixels)):
-    #   if pixels[i] > 150:
-    #     pixels[i] = 255
-    #   else:
-    #     pixels[i] = 0
-    # seg_regiao = pixels.reshape(img.shape[0], img.shape[1])
     ret, thresh = cv2.threshold(img, 150, 255, cv2.THRESH_BINARY)
     return thresh
 

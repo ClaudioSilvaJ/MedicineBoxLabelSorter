@@ -8,7 +8,6 @@ class Helper(object):
 
     def show_img(self, img):
         if not self.debug:
-            print("Debug mode não está habilitado para exibir imagens.")
             return
         pil_img = Image.fromarray(img)
         pil_img.show()

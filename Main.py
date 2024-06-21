@@ -22,6 +22,7 @@ class Main:
     def run(self):
       modelOCR = ModelOCR()
       filenames = self.loadingImagens()
+      #filenames = [filenames[0]]
       
       start = time.time()
       for img_array, filename  in zip(self.images, filenames):
@@ -35,6 +36,7 @@ class Main:
 
     def useModel(self, img, model):
         seg_regiao = self.ImageProcessor.segmenta2regioes(img)
+        Helper.show_img(self, seg_regiao)
         text_area = self.FindLines.find_text(seg_regiao)
         contours = self.FindLines.find_countours(text_area)
         erosao_img = self.ImageProcessor.erode(text_area)

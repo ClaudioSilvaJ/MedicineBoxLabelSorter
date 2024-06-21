@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from v3.util.Helper import Helper
+from util.Helper import Helper
 
 class FindLines(Helper):
   
@@ -19,6 +19,7 @@ class FindLines(Helper):
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, kernel_size)
     bw_closed = cv2.morphologyEx(bw, cv2.MORPH_CLOSE, kernel)
     self.images.append(bw_closed)
+    Helper.show_img(self, bw_closed)
     contours, _ = cv2.findContours(bw_closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     filtered_contours = [cnt for cnt in contours if (cv2.boundingRect(cnt)[2] / cv2.boundingRect(cnt)[3])>=3.0]
     min_width = 50
