@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  mlflow:
+    build:
+      context: .
+      dockerfile: Dockerfile.mlflow
+    volumes:
+      - ./mlflow:/mlflow
+    ports:
+      - "5001:5001"
+    networks:
+      - ml_network
+
+  flask:
+    build:
+      context: .
+      dockerfile: Dockerfile.flask
+    ports:
+      - "5000:5000"
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:5001
+    depends_on:
+      - mlflow
+    networks:
+      - ml_network
+
+networks:
+  ml_network:
+    driver: bridge

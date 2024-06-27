@@ -1,0 +1,20 @@
+FROM python:3.11.7
+
+RUN apt-get update && apt-get install -y libgl1-mesa-glx
+
+WORKDIR /app
+
+COPY main2.py /app
+COPY requirements.txt /app
+COPY templates /app/templates
+
+RUN pip install -r requirements.txt
+
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
+ENV FLASK_RUN_PORT=5000
+ENV MLFLOW_TRACKING_URI=http://mlflow:5001
+
+EXPOSE 5000
+
+CMD ["python", "main2.py"]

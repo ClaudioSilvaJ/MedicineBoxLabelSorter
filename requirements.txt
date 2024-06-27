@@ -1,0 +1,9 @@
+easyocr==1.7.1
+opencv-python==4.9.0.80
+matplotlib==3.8.3
+numpy==1.23.5
+imgaug==0.4.0
+mlflow==2.12.1
+Flask==3.0.3
+werkzeug==3.0.2
+Pillow==10.2.0
