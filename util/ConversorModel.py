@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-model = tf.keras.models.load_model('modelo.h5') # Path do modelo
+model = tf.keras.models.load_model('modelo.h5')
 
 converter = tf.lite.TFLiteConverter.from_keras_model(model)
 
